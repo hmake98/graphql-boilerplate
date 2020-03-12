@@ -63,4 +63,17 @@ post.deletePost = async (parent, {
   })
 }
 
+post.updateDraft = async (parent, args, context) => {
+  console.log(args)
+  const updateUser = await context.prisma.updatePost({
+    data: {
+      ...args
+    },
+    where: {
+      id: userId
+    },
+  })
+  return updateUser
+}
+
 module.exports = post;
