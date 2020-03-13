@@ -64,13 +64,13 @@ post.deletePost = async (parent, {
 }
 
 post.updateDraft = async (parent, args, context) => {
-  console.log(args)
+  let postId = args.input.params.id
   const updateUser = await context.prisma.updatePost({
     data: {
-      ...args
+      ...args.input.data
     },
     where: {
-      id: userId
+      id: postId
     },
   })
   return updateUser

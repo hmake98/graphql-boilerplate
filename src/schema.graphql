@@ -9,7 +9,7 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   createDraft(title: String!, content: String!): Post!
-  updateDraft(input:UpdateDraftInput): Post
+  updateDraft(input: UpdateDraftInput): Post
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
 }
@@ -39,8 +39,8 @@ type Post {
 }
 
 input UpdateDraftInput {
-  data:UpdateDraftData,
-  params:UpdateDrfatParams
+  data: UpdateDraftData
+  params: UpdateDrfatParams!
 }
 
 input UpdateDraftData {
@@ -49,5 +49,5 @@ input UpdateDraftData {
 }
 
 input UpdateDrfatParams {
-  id: ID
+  id: ID!
 }
