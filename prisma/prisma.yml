@@ -1,6 +1,0 @@
-endpoint: https://eu1.prisma.sh/harsh-makwana-6efd1f/graphql-boilerplate/dev
-datamodel: datamodel.graphql
-
-generate:
-  - generator: javascript-client
-    output: ../src/generated/prisma-client/
