@@ -5,13 +5,12 @@ const auth = {};
 
 auth.signup = async (parent, args, context) => {
   try {
-    const password = await bcrypt.hash(args.password, 10)
-
+    const password = await bcrypt.hash(args.password, 10);
     const user = await context.prisma.createUser({
       ...args,
       password
     })
-
+    console.log(user);
     return {
       token: jwt.sign({
         userId: user.id
