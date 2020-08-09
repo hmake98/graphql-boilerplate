@@ -1,12 +1,14 @@
 const {
     getUserId
 } = require('../../utils');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 authQuery = {};
 
-authQuery.me = async (parent, args, context) => {
+authQuery.me = async (parent, args) => {
     try {
-        const id = getUserId(context)
+        const id = getUserId()
         let data = await context.prisma.user({
             id
         })
