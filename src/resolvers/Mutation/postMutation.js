@@ -8,7 +8,7 @@ post.createDraft = async (parent, {
   title,
   content
 }, context) => {
-  const userId = getUserId(context)
+  // const userId = getUserId(context)
   return context.prisma.createPost({
     title,
     content,
@@ -23,7 +23,7 @@ post.createDraft = async (parent, {
 post.publish = async (parent, {
   id
 }, context) => {
-  const userId = getUserId(context)
+  // const userId = getUserId(context)
   const postExists = await context.prisma.$exists.post({
     id,
     author: {
@@ -47,7 +47,7 @@ post.publish = async (parent, {
 post.deletePost = async (parent, {
   id
 }, context) => {
-  const userId = getUserId(context)
+  // const userId = getUserId(context)
   const postExists = await context.prisma.$exists.post({
     id,
     author: {

@@ -3,11 +3,14 @@
   "scripts": {
     "start": "nodemon -e js,graphql -x node -r dotenv/config src/index.js",
     "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config src/index.js",
-    "nodemon": "nodemon"
+    "db:save": "npx prisma migrate save --experimental",
+    "db:up": "npx prisma migrate up --experimental"
   },
   "dependencies": {
     "@prisma/client": "^2.4.1",
     "bcryptjs": "2.4.3",
+    "graphql-middleware": "^4.0.2",
+    "graphql-shield": "^7.3.3",
     "graphql-yoga": "1.18.3",
     "jsonwebtoken": "8.5.1"
   },

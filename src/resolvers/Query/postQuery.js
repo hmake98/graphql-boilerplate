@@ -18,7 +18,7 @@ postQuery.feed = async (parent, args, context) => {
 
 postQuery.drafts = async (parent, args, context) => {
   try {
-    const id = getUserId(context)
+    // const id = getUserId(context)
     const where = {
       published: false,
       author: {

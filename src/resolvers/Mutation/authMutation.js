@@ -6,11 +6,12 @@ const auth = {};
 auth.signup = async (parent, args, context) => {
   try {
     const password = await bcrypt.hash(args.password, 10);
-    const user = await context.prisma.createUser({
-      ...args,
-      password
-    })
-    console.log(user);
+    const user = await context.prisma.user.create({
+      data: {
+        ...args,
+        password
+      }
+    });
     return {
       token: jwt.sign({
         userId: user.id
@@ -18,6 +19,7 @@ auth.signup = async (parent, args, context) => {
       user,
     }
   } catch (err) {
+    console.log(err);
     throw new Error('Invalid Signup details')
   }
 }
