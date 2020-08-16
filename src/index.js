@@ -1,7 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { PrismaClient } = require('@prisma/client');
-const { authUser } = require('./utils');
-const { permissions } = require('./Shield/index');
+const { getUser } = require('./utils');
+const { permissions } = require('./permissions');
 const resolvers = require('./resolvers');
 
 const prisma = new PrismaClient();
@@ -14,14 +14,14 @@ const server = new GraphQLServer({
   typeDefs: 'src/schema.graphql',
   resolvers,
   middlewares: [ permissions ],
-  options,
-  context: request => {
+  context: (request) => {
     return {
       ...request,
       prisma,
-      user: authUser(request)
+      userId: getUser(request)
     }
-  }
+  },
+  options, 
 })
 
 server.start(() => console.log('Server is running on http://localhost:4000'));
